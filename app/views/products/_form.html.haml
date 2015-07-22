@@ -1,0 +1,19 @@
+= form_for([@catalog, @catalog.products.build]) do |f|
+    
+  %p
+        Продукт
+    %br
+          #{f.text_field :name}
+        
+    
+  %p
+        Описание
+    %br
+          #{f.text_area :description}
+  %p
+        Цена
+    %br
+          #{f.number_field :price, in: 1.0..2000.0, step: 1}
+    
+  %p
+        #{f.submit 'Создать продукт'}

@@ -1,0 +1,13 @@
+%p
+  %strong Продукт:
+  = product.name
+%p
+  %strong Описание:
+  = product.description
+%p
+  %strong Цена:
+  = product.price
+%p
+  = link_to 'Удалить продукт', [product.catalog, product], method: :delete, data: { confirm: 'Are you sure?' }
+%p
+

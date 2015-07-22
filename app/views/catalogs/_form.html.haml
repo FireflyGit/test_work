@@ -9,12 +9,12 @@
         - @catalog.errors.full_messages.each do |msg|
           %li= msg
   %p
-    = f.label :name
+    Каталог
   %br
     = f.text_field :name
   %p
-    = f.label :description
+    Описание
   %br
     = f.text_area :description
   %p
-    = f.submit
+    = f.submit 'Создать каталог'

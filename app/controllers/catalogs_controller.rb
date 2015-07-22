@@ -1,14 +1,14 @@
 class CatalogsController < ApplicationController
+  before_action :set_catalog, only: [:show, :edit, :update, :destroy]
   
   def show
-    @catalog = Catalog.find(params[:id])
   end
 
   def index
     @catalog = Catalog.all
   end
+
   def edit
-    @catalog = Catalog.find(params[:id])
   end
 
   def new
@@ -26,7 +26,6 @@ class CatalogsController < ApplicationController
   end
 
   def update
-    @catalog = Catalog.find(params[:id])
     if @catalog.update(catalog_params)
       redirect_to @catalog
     else
@@ -35,13 +34,16 @@ class CatalogsController < ApplicationController
   end
 
    def destroy
-    @catalog = Catalog.find(params[:id])
     @catalog.destroy
    
     redirect_to catalogs_path
   end
   
   private
+    def set_catalog
+      @catalog = Catalog.find(params[:id])
+    end
+
     def catalog_params
       params.require(:catalog).permit(:name, :description)
     end

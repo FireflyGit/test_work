@@ -1,43 +1,15 @@
 %p
-  %strong Name:
+  %strong Католог:
   = @catalog.name
 %p
-  %strong Description:
+  %strong Описание:
   = @catalog.description
 
-%h2 products
-- @catalog.products.each do |product|
-  %p
-    %strong name:
-    = product.name
-  %p
-    %strong decimal:
-    = product.description
-  %p
-    %strong price:
-    = product.price
-  %p
-    = link_to 'Destroy Product', [product.catalog, product], method: :delete, data: { confirm: 'Are you sure?' }
+%h2 Продукты
+=render @catalog.products
 
-%h2 Add a product:
-= form_for([@catalog, @catalog.products.build]) do |f|
-    
-  %p
-        #{f.label :name}
-    %br
-          #{f.text_field :name}
-        
-    
-  %p
-        #{f.label :description}
-    %br
-          #{f.text_area :description}
-  %p
-        #{f.label :price}
-    %br
-          #{f.number_field :price, in: 1.0..2000.0, step: 1}
-    
-  %p
-        #{f.submit}
 
-= link_to 'Catalog', catalogs_path
+%h2 Добавить продукт:
+=render 'products/form'
+
+= link_to 'Список каталогов', catalogs_path
